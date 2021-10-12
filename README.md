@@ -52,3 +52,62 @@ Lists and categorize country phone numbers, it also offers possibility to filter
 
 ### Customers paginated by 5 customers per page (Page number 7)
 ![Paginated - 5 customers per page and page number 7](/Demo/paginated_5_per_page_number_7.PNG)
+
+
+<!How to run -->
+## How To Run
+
+You can run the project by any of the two methods listed below: JAR file or using docker.
+
+### JAR File
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Mazen-eng/Jumia-country-number-validator.git
+   ```
+2. In the project's root directory run 
+   ```sh
+   mvn clean package
+   ```
+   Or you can run the following command instead if you want to put the package in your local repo
+   ```sh
+   mvn clean install
+   ```
+3. Run the following command
+   ```sh
+   java -jar target/jumia-validator-app.jar
+   ```
+4. The app is now running and you can access it through the following url
+   ```sh
+   http://localhost:8090/
+   ```
+   
+### Using Docker
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Mazen-eng/Jumia-country-number-validator.git
+   ```
+2. In the project's root directory run 
+   ```sh
+   mvn clean package
+   ```
+   Or you can run the following command instead if you want to put the package in your local repo
+   ```sh
+   mvn clean install
+   ```
+3. Still on the project's root directory run the following command 
+   ```sh
+   docker build -t validator-app .
+   ```
+   (Don't forget the "." at the end of the command)
+4. Also at the same path (Project's root folder) run the following
+   ```sh
+   docker run --rm -it -p 8090:8090 validator-app
+   
+5. The app is now running and you can access it through the following url
+   ```sh
+   http://localhost:8090/
+   ```
+   
+ 
