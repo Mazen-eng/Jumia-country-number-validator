@@ -40,7 +40,7 @@ Lists and categorize country phone numbers, it also offers possibility to filter
     * Also when the `CountryNumbers` component is first loaded it sends a request to the backend to retrieve the available countries list.
     * Service that are responsible for making the requests..
 
-* phonebook-app (BE):
+* Backend
     * controllers : Classes that handle the requests and use the appropriate serving method.
       * CountryController: Responsible for the request of the list of available countries from the cache.
       * CustomerController: Responsible for the customer's related requests including filtration and pagination using the service layer.
