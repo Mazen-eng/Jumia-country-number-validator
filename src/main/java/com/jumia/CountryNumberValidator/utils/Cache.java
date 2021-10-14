@@ -13,7 +13,7 @@ import com.jumia.CountryNumberValidator.model.Country;
 @Component
 public class Cache {
 	
-	private Logger logger = LoggerFactory.getLogger(Cache.class);
+	private static final Logger logger = LoggerFactory.getLogger(Cache.class);
 	
 	private ImmutableList<String> countriesNames;
 	private ImmutableMap<String, Country> codeToCountriesMap;
@@ -60,7 +60,7 @@ public class Cache {
 	 * @param code :country code
 	 * @return :The country that maps to the given code
 	 */
-	public Country getCountryFromCode(String code) {
+	public Country getCountryFromCode(String code){
 		
 		logger.info("Retrieving country ...");
 		if(!codeToCountriesMap.containsKey(code.toLowerCase())) {
@@ -77,7 +77,7 @@ public class Cache {
 	 * @return countryCode
 	 * @throws InvalidCountryNameException
 	 */
-	public String getCodeFromCountryName(String countryName) throws InvalidCountryNameException {
+	public String getCodeFromCountryName(String countryName) {
 
 		logger.info("Retrieving country code ...");
 		if(!countryNameToCountryCodeMap.containsKey(countryName.toLowerCase())) {

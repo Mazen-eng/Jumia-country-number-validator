@@ -30,7 +30,7 @@
         <v-card-title>Validated Numbers</v-card-title>
         <v-data-table
           :headers="headers"
-          :items="numbers"
+          :items="customers"
           disable-pagination
           :hide-default-footer="true"
         >
@@ -80,7 +80,7 @@ export default {
   name: "validated-numbers-list",
   data() {
     return {
-      numbers: [],
+      customers: [],
       headers: [
         {
           text: "Customer name",
@@ -139,9 +139,8 @@ export default {
 
       CountryNumbersDataService.getCustomers(params)
         .then((response) => {
-          const { totalPages, numbers } = response.data;
-          this.numbers = numbers;
-          this.numbers = this.numbers.map(this.getDisplayNumbers);
+          const { totalPages, content } = response.data;
+          this.customers = content;
           this.totalPages = totalPages;
         })
         .catch((e) => {
@@ -177,17 +176,6 @@ export default {
           console.log(e);
         });
       
-    },
-
-    getDisplayNumbers(number) {
-      return {
-        id: number.id,
-        customerName: number.customerName,
-        countryCode: number.countryCode,
-        countryName: number.countryName,
-        phoneNumber: number.phoneNumber,
-        valid: number.valid,
-      };
     },
   },
   mounted() {

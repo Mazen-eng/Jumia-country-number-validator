@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jumia.CountryNumberValidator.utils.Cache;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
 @CrossOrigin
 @RestController
 @RequestMapping("countries")
 public class CountryController {
 	
-	private Logger logger = org.slf4j.LoggerFactory.getLogger(CountryController.class);
+	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(CountryController.class);
 	@Autowired
 	private Cache cache;
 	
@@ -31,18 +31,18 @@ public class CountryController {
 	 * @return a list of all customers in the cache
 	 */
 	
-	@ApiOperation(value = "Retrieve countries' names from the cache")
-	@GetMapping("get")
+	@Operation(summary  = "Retrieve countries' names from the cache")
+	@GetMapping
 	public ResponseEntity<List<String>> getCountriesList(){
 		List<String> countries = cache.getCountriesNames();
 		
 		//Return ok and the list of countries if there are countries in the cache
 		if(countries.size() > 0) {
-			return new ResponseEntity<List<String>>(countries, HttpStatus.OK);
+			return new ResponseEntity<>(countries, HttpStatus.OK);
 		}
 		
 		logger.error("Error retrieving countries' list from cache!");
-		return new ResponseEntity<List<String>>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 }

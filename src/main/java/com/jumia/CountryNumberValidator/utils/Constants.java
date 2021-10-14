@@ -10,6 +10,7 @@ public final class Constants {
 	public static final String ALL_CATEGORIES = "All";
 	
 	public static final String STATE_VALID = "valid";
+	public static final String STATE_INVALID = "invalid";
 	
 	public static final String RESPONSE_NUMBERS = "numbers";
 	public static final String RESPONSE_CURRENT_PAGE = "currentPage";

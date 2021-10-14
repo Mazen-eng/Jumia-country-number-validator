@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PhoneNumberValidatorImpl implements Validator {
 
-	private Logger logger = LoggerFactory.getLogger(PhoneNumberValidatorImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(PhoneNumberValidatorImpl.class);
 	/**
 	 * @param reference is the country code pattern
 	 * @param the phone number to be validated
