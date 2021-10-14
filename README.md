@@ -28,9 +28,7 @@ Lists and categorize country phone numbers, it also offers possibility to filter
 ## Design Decisions
 
 * Using `DTOs` to encapsulate the necessary data inside one object to reduce the overhead of multiple API calls from the frontend to get the required info.
-* Applying the `SOLID` principles throughout the application.
 * Abstracting different app components by depending on `interfaces` rather than `implementations`.
-* Exposing only the required parts of the application while encapsulate and restrict access to the remaining.
 
 <!-- Project Structure -->
 ## Project structure
@@ -41,7 +39,7 @@ Lists and categorize country phone numbers, it also offers possibility to filter
     * Service that are responsible for making the requests..
 
 * Backend
-    * controllers : Classes that handle the requests and use the appropriate serving method.
+    * Controllers : Classes that handle the requests and use the appropriate serving method.
       * CountryController: Responsible for the request of the list of available countries from the cache.
       * CustomerController: Responsible for the customer's related requests including filtration and pagination using the service layer.
     * Models: Represents the models used.
@@ -77,10 +75,6 @@ Lists and categorize country phone numbers, it also offers possibility to filter
   * Google Guava.
   * Swagger (Springdoc-openapi).
   * H2 Database.
-
-* Improve the database design so it can be used to reduce the overhead done by the application for the validation which can be optimized by reducing the usage of the app's memory.
-* Adding a security layer.
-* Adding searching capabilities by using different parameters.
 
 <!-- Enhancements -->
 ## Enhancements
