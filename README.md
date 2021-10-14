@@ -6,9 +6,9 @@
   <summary>Contents</summary>
   <ol>
     <li><a href="#project-summary"><b>Project Summary</b></a></li>
-    <li><a href="#design-decesions"><b>Design Decisions</b></a></li>    
+    <li><a href="#design-decisions"><b>Design Decisions</b></a></li>    
     <li><a href="#project-structure"><b>Project Structure</b></a></li>    
-    <li><a href="#teck-stack"><b>Tech Stack</b></a></li>    
+    <li><a href="#tech-stack"><b>Tech Stack</b></a></li>    
     <li><a href="#enhancements"><b>Enhancements</b></a></li>
     <li><a href="#how-to-run"><b>How To Run</a>
     <ul>
