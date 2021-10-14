@@ -5,7 +5,7 @@
 <details>
   <summary>Contents</summary>
   <ol>
-    <li><b>Project Summary</b></li>
+    <li><a href="#project-summary"><b>Project Summary</b></a></li>
     <li><b>Design Decisions</b></li>    
     <li><b>Project Structure</b></li>    
     <li><b>Tech Stack</b></li>    
@@ -20,7 +20,7 @@
 </details>
 
 <!-- Project Summary -->
-## Project Summary
+## PROJECT SUMMARY
 
 Lists and categorize country phone numbers, it also offers possibility to filter phone numbers by country and their state whether they are valid or not.
 
@@ -67,7 +67,7 @@ Lists and categorize country phone numbers, it also offers possibility to filter
     * Vuetify.
   * Axios.
 * Backend
-  * Java.
+  * Java (11).
   * Spring boot.
   * Spring Data JPA.
   * SQLite.
