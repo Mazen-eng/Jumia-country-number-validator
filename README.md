@@ -6,16 +6,16 @@
   <summary>Contents</summary>
   <ol>
     <li><a href="#project-summary"><b>Project Summary</b></a></li>
-    <li><b>Design Decisions</b></li>    
-    <li><b>Project Structure</b></li>    
-    <li><b>Tech Stack</b></li>    
-    <li><b>Enhancements</b></li>
-    <li><b>How To Run</a>
+    <li><a href="#design-decesions"><b>Design Decisions</b></a></li>    
+    <li><a href="#project-structure"><b>Project Structure</b></a></li>    
+    <li><a href="#teck-stack"><b>Tech Stack</b></a></li>    
+    <li><a href="#enhancements"><b>Enhancements</b></a></li>
+    <li><a href="#how-to-run"><b>How To Run</a>
     <ul>
-        <li><b>Run A JAR File</b></li>
-        <li><b>Run With Docker</b></li>
+        <li><a href="#jar-file"><b>Run A JAR File</b></a></li>
+        <li><a href="#using-docker"><b>Run With Docker</b></a></li>
       </ul></li>
-    <li><b>Demo Screens</b></li>
+    <li><a href="#demo-screens"><b>Demo Screens</b></a></li>
   </ol>
 </details>
 
@@ -25,13 +25,13 @@
 Lists and categorize country phone numbers, it also offers possibility to filter phone numbers by country and their state whether they are valid or not.
 
 <!-- Design Decisions -->
-## Design Decisions
+## DESIGN DECISIONS
 
 * Using `DTOs` to encapsulate the necessary data inside one object to reduce the overhead of multiple API calls from the frontend to get the required info.
 * Abstracting different app components by depending on `interfaces` rather than `implementations`.
 
 <!-- Project Structure -->
-## Project structure
+## PROJECT STRUCTURE
 
 * Frontend
     * Home page (CountryNumbers component) that renders the content on the user's screen.
@@ -60,7 +60,7 @@ Lists and categorize country phone numbers, it also offers possibility to filter
     * Tests: The tests for customerService, end-points test for the CountryController and CustomerController.
 
 <!-- Tech Stack -->
-## Tech Stack
+## TECH STACK
 
 * Frontend.
   * VueJs.
@@ -77,7 +77,7 @@ Lists and categorize country phone numbers, it also offers possibility to filter
   * H2 Database.
 
 <!-- Enhancements -->
-## Enhancements
+## ENHANCEMENTS
 
 * Implement searcing functionalities.
 * Improve the database design so it can be used to reduce the overhead done by the application for the validation which can be optimized by reducing the usage of the app's memory.
@@ -89,7 +89,7 @@ Lists and categorize country phone numbers, it also offers possibility to filter
 
 You can run the project by any of the two methods listed below: JAR file or using docker.
 
-### JAR File
+### JAR FILE
 
 1. Clone the repo
    ```sh
@@ -116,7 +116,7 @@ You can run the project by any of the two methods listed below: JAR file or usin
    http://localhost:8090/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
    ```
    
-### Using Docker
+### USING DOCKER
 
 1. Clone the repo
    ```sh
@@ -149,7 +149,7 @@ You can run the project by any of the two methods listed below: JAR file or usin
    ```
    
  <!-- Demo Screens -->
-## Demo Screens
+## DEMO SCREENS
 
 ### Home page (All customers)
 ![Home - All customers](/Demo/home.PNG)
