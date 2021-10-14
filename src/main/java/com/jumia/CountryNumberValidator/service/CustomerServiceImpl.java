@@ -44,7 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
 	 * @param size :page size
 	 * @param countryCategory :country filter
 	 * @param state :state filter
-	 * @return response map
+	 * @return page of customerDto
 	 */
 	public Page<CustomerDto> getValidatedCustomersNumbers(int page, int size, String countryCategory, String state){
 
@@ -62,10 +62,13 @@ public class CustomerServiceImpl implements CustomerService {
 				return filterByState(page, size, state);
 			} else {
 				logger.info("Retrieving all customers ...");
-				return getAllCustomers(paging);
+				Page<Customer> customerPages = customerRepo.findAll(paging);
+				logger.info(customerPages.getTotalElements() + " Customers' pages found");
+				return createCustomerDtoPage(customerPages);
 			}
 	}
 
+	//Gets customers by the state and country and return the result as a page of customerDto
 	private Page<CustomerDto> filterByCountryAndState(int page, int size, String countryCategory, String state) {
 		Boolean booleanState = mapStateToBoolean(state);
 		String countryCode = cache.getCodeFromCountryName(countryCategory);
@@ -84,10 +87,13 @@ public class CustomerServiceImpl implements CustomerService {
 		return createCustomerDtoPage(page, size, filteredCustomersDtoList);
 	}
 
+	//Gets customers by the state and return the result as a page of customerDto
 	private Page<CustomerDto> filterByState(int page, int size, String state) {
 
 		Boolean booleanState = mapStateToBoolean(state);
-		List<Customer> customers = getAllCustomers();
+		List<Customer> customers = customerRepo.findAll();
+		logger.info(customers.size() + " customers retrieved");
+
 		List<CustomerDto> customersDtoTempList = createCustomerDtoList(customers);
 		List<CustomerDto> filteredCustomersDtoList;
 
@@ -100,32 +106,6 @@ public class CustomerServiceImpl implements CustomerService {
 			throw new RuntimeException("No customers found!");
 		}
 		return createCustomerDtoPage(page, size, filteredCustomersDtoList);
-	}
-
-	//Get all customers as a page of customers
-	private Page<CustomerDto> getAllCustomers(Pageable paging) {
-		Page<Customer> customerPages = customerRepo.findAll(paging);
-		
-		if(customerPages.getTotalElements() < 1) {
-			logger.error("Failed to retrieve all customers page!");
-			throw new NoCustomersFoundException("No customers found!");
-		}
-		
-		logger.info("Customers' page retrieved successfully!");
-		return createCustomerDtoPage(customerPages);
-	}
-
-	//Retrieve a list of all customers
-	private List<Customer> getAllCustomers() {
-		List<Customer> customers = customerRepo.findAll();
-		
-		if(customers.isEmpty()) {
-			logger.error("Failed to retrieve all customers!");
-			throw new NoCustomersFoundException("No customers found!");
-		}
-		
-		logger.info("Customers retrieved successfully!");
-		return customers;
 	}
 
 	//Converts list of customers to a list of customersDto
@@ -145,10 +125,10 @@ public class CustomerServiceImpl implements CustomerService {
 	 * Find customers by country (Represented as countryCode) and return customer's pages if matches the given country code includes pagination info
 	 * @param countryCode
 	 * @param paging
-	 * @return Customer page
+	 * @return CustomerDto page
 	 * @throws NoCustomersFoundException
 	 */
-	public Page<CustomerDto> findCustomersByCountry(String countryCategory, Pageable paging) {
+	private Page<CustomerDto> findCustomersByCountry(String countryCategory, Pageable paging) {
 		String countryCode = cache.getCodeFromCountryName(countryCategory);
 
 		Page<Customer> customerPagesFilteredByCountry = customerRepo.findByPhoneStartsWith(countryCode, paging);
@@ -165,7 +145,7 @@ public class CustomerServiceImpl implements CustomerService {
 	 * @return List of customers
 	 * @throws NoCustomersFoundException
 	 */
-	public List<Customer> findCustomersByCountry(String countryCode) {
+	private List<Customer> findCustomersByCountry(String countryCode) {
 		List<Customer> customerPagesFilteredByCountry = customerRepo.findByPhoneStartsWith(countryCode);
 		
 		if(customerPagesFilteredByCountry.size() < 1 || customerPagesFilteredByCountry == null) {

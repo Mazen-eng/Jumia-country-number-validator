@@ -82,21 +82,7 @@ public class CustomerServiceTest {
 	    Mockito.when(customerRepo.findByPhoneStartsWith("(273)", pageable)).thenReturn(customerPage);
 	    assertThrows(NoCustomersFoundException.class,
 	        () -> {
-	      customerService.findCustomersByCountry("invalidCountryName", pageable);
-	    });
-	  }
-
-	  @Test
-	  public void testFindCustomersByInvalidCountryNameWithNoPaginationInfo() {
-
-		Pageable pageable = Pageable.unpaged();
-	    Page<Customer> customerPage = new PageImpl<>(Lists.list(getCameroonInvalidCustomer(), getCameroonValidCustomer()));
-
-	    Mockito.when(customerRepo.findByPhoneStartsWith("(237)", pageable)).thenReturn(customerPage);
-
-	    assertThrows(NoCustomersFoundException.class,
-	        () -> {
-	      customerService.findCustomersByCountry("invalidCountryName", pageable);
+	      customerService.getValidatedCustomersNumbers(0, 5, "invalidCountryName", "all");
 	    });
 	  }
 
